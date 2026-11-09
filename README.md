@@ -34,4 +34,8 @@
 
 ## Mise en ligne
 
-Netlify Drop : glisser ce dossier sur https://app.netlify.com/drop, puis renommer le site (par exemple `cotisation-nanan-kpadjalika`).
+**Vercel depuis le 2026-11-09** (le lien Netlify n'avait pas encore été partagé). Dépôt public séparé `Ferdinand-dev03/cotisation-nanan-kpadjalika` (https://github.com/Ferdinand-dev03/cotisation-nanan-kpadjalika) : page, image, script de suivi, README, `vercel.json` (en-têtes de sécurité) et `.gitignore`. Aucun secret. Le workspace reste privé.
+
+**Pour une mise à jour :** cloner le dépôt, y recopier les fichiers de ce dossier, vérifier qu'aucun secret n'y figure, commit, push : Vercel remet en ligne tout seul.
+
+Ancien hébergement : Netlify Drop (https://cotisation-nanan-kpadjalika.netlify.app), à supprimer une fois Vercel vérifié.

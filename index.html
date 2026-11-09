@@ -36,40 +36,48 @@ h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0;f
 /* Héro */
 .hero{background:var(--black);color:#fff;border-bottom:6px solid #B5121B;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background:url(images/pagne.jpg) center/cover;opacity:.16}
-.hero .wrap{position:relative;padding-block:40px 36px;display:grid;gap:14px}
+.hero .wrap{position:relative;padding-block:24px 22px;display:grid;gap:10px}
 .eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#F0767C}
 .hero .name{font-family:var(--display);font-size:clamp(1.25rem,4.4vw,1.6rem);letter-spacing:.02em}
-.hero h1{font-size:clamp(2.3rem,9vw,3.4rem)}
+.hero h1{font-size:clamp(2rem,8vw,3.2rem)}
 .hero p{margin:0;color:#DCD6D8;font-size:1.05rem;max-width:52ch}
 .hero .btn{justify-self:start}
 
 /* Sections */
 main .wrap{padding-block:28px 56px;display:grid;gap:22px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:14px}
-.card h2{font-size:1.6rem}
+.card h2{font-size:1.6rem;display:flex;align-items:center;gap:12px}
+/* Numéro d'étape : 1 = envoyer l'argent, 2 = prévenir le comité */
+.etape{flex:none;width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-family:var(--body);font-size:1.05rem;font-weight:800;display:inline-grid;place-items:center}
 .card > p{margin:0;color:var(--muted)}
-.numero{display:grid;gap:6px;text-align:center;border:2px dashed var(--line);border-radius:14px;padding:18px 12px;background:var(--bg)}
+.numero{display:grid;gap:6px;text-align:center;border:2px dashed var(--line);border-radius:14px;padding:18px 8px;background:var(--bg)}
 .numero .lab{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted)}
-.numero b{font-size:clamp(2rem,10vw,2.6rem);font-variant-numeric:tabular-nums;letter-spacing:.03em;user-select:all}
+/* Le numéro ne doit JAMAIS se couper sur deux lignes, même sur un petit Android (320 à 360 px) */
+.numero b{font-size:clamp(1.5rem,7.6vw,2.6rem);white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:.02em;user-select:all}
 .numero .titulaire{font-size:.95rem}
 .numero .titulaire.vide{color:var(--warn-ink);background:var(--warn-bg);border-radius:8px;padding:4px 8px;justify-self:center}
-.reseaux{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-.tag{border-radius:999px;padding:4px 12px;font-size:.85rem;font-weight:700;color:#111}
-.tag.wave{background:var(--wave)}
-.tag.om{background:var(--orange)}
+/* Wave et Orange Money : simples repères (point de couleur), pas des boutons, car on ne peut pas ouvrir l'appli */
+.reseaux{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:.95rem;font-weight:600;color:var(--ink)}
+.tag::before{content:"";width:10px;height:10px;border-radius:50%}
+.tag.wave::before{background:var(--wave)}
+.tag.om::before{background:var(--orange)}
 .methodes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .methode{border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:10px;align-content:start;background:var(--bg)}
 .methode h3{font-family:var(--body);font-size:1.1rem;font-weight:800;display:flex;align-items:center;gap:10px}
 .methode h3 i{width:14px;height:14px;border-radius:50%;display:inline-block}
 .methode ol{margin:0;padding-left:20px;display:grid;gap:4px;font-size:.95rem}
-.alerte{display:flex;gap:10px;align-items:flex-start;background:var(--soft);border-radius:12px;padding:12px 14px;font-size:.92rem}
-.alerte b{color:var(--accent)}
+/* Avertissement : jaune, distinct du bouton « Copier » */
+.alerte{display:flex;gap:10px;align-items:flex-start;background:var(--warn-bg);color:var(--warn-ink);border-left:4px solid #E0A100;border-radius:10px;padding:12px 14px;font-size:.95rem}
+.alerte b{color:inherit}
 
 /* Formulaire */
 .field{display:grid;gap:6px}
 .field label,.field .lab{font-weight:600;font-size:.92rem}
-.field small{color:var(--muted);font-size:.82rem}
+.field small{color:var(--muted);font-size:.9rem}
 input{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px;width:100%;min-width:0}
+/* Exemple en gris clair et en police normale, pour ne pas le prendre pour une valeur déjà remplie */
+input::placeholder{color:var(--muted);opacity:.65;font-weight:400}
 input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
 .montant{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden}
 .montant input{border:0;border-radius:0;background:transparent;font-weight:700;font-size:1.15rem;font-variant-numeric:tabular-nums}
@@ -93,7 +101,8 @@ input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:tran
 .done{display:grid;gap:12px;background:var(--soft);border-radius:12px;padding:14px}
 .done h3{font-family:var(--body);font-size:1rem}
 .done pre{white-space:pre-wrap;word-break:break-word;font:inherit;font-size:.9rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;margin:0}
-footer{border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+.note{margin:0;font-size:.92rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:.92rem}
 footer .wrap{padding-block:20px;display:grid;gap:4px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -115,7 +124,7 @@ footer .wrap{padding-block:20px;display:grid;gap:4px}
   <div class="wrap">
 
     <section class="card" id="cotiser" aria-labelledby="h-num">
-      <h2 id="h-num">Le numéro de cotisation</h2>
+      <h2 id="h-num"><span class="etape" aria-hidden="true">1</span>Envoyez votre cotisation</h2>
       <p>Le montant est libre. Envoyez votre contribution à ce numéro, par Wave ou par Orange Money.</p>
       <div class="numero">
         <span class="lab">Numéro du comité</span>
@@ -128,8 +137,8 @@ footer .wrap{padding-block:20px;display:grid;gap:4px}
     </section>
 
     <section class="card" aria-labelledby="h-prev">
-      <h2 id="h-prev">Prévenez le comité</h2>
-      <p>Après votre envoi, dites au comité qui a cotisé. Cela l'aide à tenir les comptes et à remercier chaque famille.</p>
+      <h2 id="h-prev"><span class="etape" aria-hidden="true">2</span>Prévenez le comité</h2>
+      <p><b>Une fois l'argent envoyé</b>, dites au comité qui a cotisé. Cela l'aide à tenir les comptes et à remercier chaque famille.</p>
       <form id="form" novalidate style="display:grid;gap:14px">
         <div class="field">
           <label for="fNom">Votre nom et prénom</label>
@@ -147,7 +156,7 @@ footer .wrap{padding-block:20px;display:grid;gap:4px}
         <div class="field">
           <span class="lab" id="moyenLab">Envoyé avec</span>
           <div class="seg" role="radiogroup" aria-labelledby="moyenLab">
-            <label><input type="radio" name="moyen" value="Wave" checked>Wave</label>
+            <label><input type="radio" name="moyen" value="Wave">Wave</label>
             <label><input type="radio" name="moyen" value="Orange Money">Orange Money</label>
           </div>
         </div>
@@ -156,7 +165,7 @@ footer .wrap{padding-block:20px;display:grid;gap:4px}
           <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
           Prévenir le comité sur WhatsApp
         </button>
-        <p style="margin:0;font-size:.8rem;color:var(--muted)">Pensez à joindre la capture de votre envoi dans WhatsApp. Votre déclaration est enregistrée pour les comptes du comité, elle n'est partagée avec personne d'autre.</p>
+        <p class="note">Pensez à joindre la capture de votre envoi dans WhatsApp. Votre déclaration est enregistrée pour les comptes du comité, elle n'est partagée avec personne d'autre.</p>
         <div class="done" id="done" aria-live="polite" hidden>
           <h3>Message prêt : <span id="dCode"></span></h3>
           <p style="margin:0;font-size:.92rem">Si WhatsApp ne s'est pas ouvert, utilisez le bouton ci-dessous ou copiez le message.</p>
@@ -240,10 +249,12 @@ function code(){
 $("form").addEventListener("submit",e=>{
   e.preventDefault();
   const nom=$("fNom").value.trim(), fam=$("fFam").value.trim(), n=montant();
-  const moyen=(document.querySelector('input[name="moyen"]:checked')||{}).value||"Wave";
+  /* Aucun moyen coché par défaut : la personne choisit, sinon le bilan Wave / Orange Money serait faussé */
+  const moyen=(document.querySelector('input[name="moyen"]:checked')||{}).value||"";
   let msg="";
   if(!nom) msg="Indiquez votre nom, pour que le comité sache qui remercier.";
   else if(n<100) msg="Indiquez le montant que vous avez envoyé.";
+  else if(!moyen) msg="Choisissez Wave ou Orange Money.";
   $("err").hidden=!msg; $("err").textContent=msg;
   if(msg) return;
   /* Anti-doublon : la même déclaration (même nom, montant, moyen) renvoyée dans la session
